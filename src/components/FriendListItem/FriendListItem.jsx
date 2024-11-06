@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import styles from "../FriendListItem/FriendListItem.module.css";
+import s from './FriendListItem.module.css';
 
-const FriendListItem = ({ avatar, name, isOnline }) => {
+
+
+const FriendsListItem = ({ avatar, name, isOnline }) => {
+  // const { avatar, name, isOnline } = friend;  
   return (
-    <div className={styles.friendCard}>
-      <img src={avatar} alt={`${name} avatar`} width="48" />
-      <p>{name}</p>
-      <p style={isOnline ? { color: 'green' } : { color: 'red' }}>
-        {isOnline ? 'Online' : 'Offline'}
-      </p>
-    </div>
-  );
-};
-
-export default FriendListItem;
+        <div className={s.cardFriends}>
+        <img className={s.imageAvatar} src={avatar} alt="Avatar" />
+        <p className={s.friendName}>{name}</p>
+        <p className={s.friendStatus}>{isOnline ? <span className={s.greenText}>Online</span> : <span className={s.redText}>Offline</span>}</p>
+      </div>
+    );
+  };
+  
+  export default FriendsListItem;

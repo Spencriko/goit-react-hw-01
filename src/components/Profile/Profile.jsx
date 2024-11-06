@@ -1,32 +1,31 @@
-import styles from "./Profile.module.css";
+// TODO -create profile component
+import s from './Profile.module.css';
 
-const Profile = (props) => {
-  return ( 
-    <div className={styles.profileCard}>
-      <div className={styles.mainCard}>
-        <img className={styles.imgProfile}
-          src={props.image}
-          alt={`${props.name}'s photo`} 
-        />
-        <p className={styles.nameProfile}>{props.name}</p>
-        <p className={styles.tagProfile}>&#64;{props.tag}</p>
-        <p className={styles.locationProfile}>{props.location}</p>
+const Profile = ({ user }) => {
+  return (
+    <div className={s.wrapper}>
+      <div className={s.card}>
+        <div>
+          <img className={s.avatar} src={user.avatar} alt='User Avatar'/>
+          <p className={s.userName}>{user.username}</p>
+          <p className={s.userTag}>@{user.tag}</p>
+          <p className={s.location}>{user.location}</p>
+        </div>
+        <ul className={s.statsTable}>
+          <li className={s.statsBox}>
+            <span className={s.stats}>Followers</span>
+            <span className={s.boldStats}>{user.stats.followers}</span>
+          </li>
+          <li className={s.statsBox}>
+            <span className={s.stats}>Views</span>
+            <span className={s.boldStats}>{user.stats.views}</span>
+          </li>
+          <li className={s.statsBox}>
+            <span className={s.stats}>Likes</span>
+            <span className={s.boldStats}>{user.stats.likes}</span>
+          </li>
+        </ul>
       </div>
-
-      <ul className={styles.listStats}>
-        <li className={styles.listStatsElem}>
-          <span>Followers</span>
-          <span className={styles.followers}>{props.stats.followers}</span>
-        </li>
-        <li className={styles.listStatsElem}>
-          <span>Views</span>
-          <span className={styles.views}>{props.stats.views}</span>
-        </li>
-        <li className={styles.listStatsElem}>
-          <span>Likes</span>
-          <span className={styles.likes}>{props.stats.likes}</span>
-        </li>
-      </ul>
     </div>
   );
 };
