@@ -1,10 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import Profile from './Profile';
+import FriendList from './FriendList';
+import TransactionHistory from './TransactionHistory';
+
+const user = {
+  name: "John Doe",
+  tag: "johndoe",
+  location: "New York, USA",
+  avatar: "https://via.placeholder.com/100",
+  stats: { followers: 1234, views: 5678, likes: 91011 }
+};
+
+const friends = [
+  { id: 1, name: "Alice", avatar: "https://via.placeholder.com/50", isOnline: true },
+  { id: 2, name: "Bob", avatar: "https://via.placeholder.com/50", isOnline: false }
+];
+
+const transactions = [
+  { id: "1", type: "Invoice", amount: "125.00", currency: "USD" },
+  { id: "2", type: "Withdrawal", amount: "85.50", currency: "USD" }
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -18,18 +39,15 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => setCount(count + 1)}>count is {count}</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <Profile {...user} />
+      <FriendList friends={friends} />
+      <TransactionHistory transactions={transactions} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
